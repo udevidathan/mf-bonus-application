@@ -1,0 +1,22 @@
+{
+  "data": {
+    "companyData": [
+      {
+        "companyTitle": "PwC",
+        "companyId": "sadllasd2"
+      },
+      {
+        "companyTitle": "Siemens",
+        "companyId": "sadllasd3"
+      },
+      {
+        "companyTitle": "KPMG",
+        "companyId": "sadllasd4"
+      },
+      {
+        "companyTitle": "NorthWestern Mutual",
+        "companyId": "sadllasd4"
+      }
+    ]
+  }
+}

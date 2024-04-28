@@ -1,0 +1,83 @@
+:root {
+  --list-item-background-color: var(--color-neutrals-white-600);
+  --list-item-border-radius: var(--size-2);
+  --list-item-background-color-even: var(--color-secondary-tint-200);
+  --list-item-background-color-hover: var(--color-white);
+  --card-box-shadow-hover: 0px 4px 8px rgba(33, 21, 81, 0.55);
+  --transition: all 0.2s;
+}
+
+.admin-dashboard__container .list {
+  display: grid;
+  align-items: baseline;
+  overflow-x: auto;
+
+  @media screen and (max-width: 767px) {
+  }
+
+  &:has(.list__item) {
+    align-content: flex-start;
+    cursor: pointer;
+  }
+}
+
+.list {
+  &__container {
+  }
+  &__cell {
+    position: relative;
+    padding: var(--size-1) var(--size-3);
+    width: 120px;
+
+    @media screen and (min-width: 768px) {
+      width: 180px;
+    }
+    &:after {
+      display: none;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      border-left: 1px solid #c4c4c4;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      /* adjust this */
+      height: 100%;
+      /* adjust this */
+    }
+
+    &:nth-child(1) {
+      &:before {
+        display: none;
+      }
+    }
+
+    > div {
+      height: 100%;
+    }
+  }
+
+  // 	list__cell end
+
+  &-list__content {
+    display: grid;
+    align-content: baseline;
+    max-width: inherit;
+  }
+
+  // list__content
+}
+
+.admin {
+  .list__item div:first-child .list__cell:nth-child(2) {
+    max-width: initial;
+    @media screen and (min-width: 768px) {
+      width: 375px;
+    }
+  }
+  .text-wrap {
+    word-break: break-word;
+  }
+}

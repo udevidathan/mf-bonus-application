@@ -1,0 +1,27 @@
+{
+  "data": {
+    "data": {
+      "deepLinks": [
+        {
+          "name": "View Onboarding",
+          "url": "https://www1.jobdiva.com/portal/okta-login.jsp?a=imjdnwq7mxlmw89k1iao8say1yq0fv0861sqmhp5b88f7cwmqrtodi6o7uyrko0i&redirect=onboarding"
+        },
+        {
+          "name": "Manage Time",
+          "url": "https://www1.jobdiva.com/portal/okta-login.jsp?a=imjdnwq7mxlmw89k1iao8say1yq0fv0861sqmhp5b88f7cwmqrtodi6o7uyrko0i&redirect=timesheets"
+        },
+        {
+          "name": "Manage Expenses",
+          "url": "https://www1.jobdiva.com/portal/okta-login.jsp?a=imjdnwq7mxlmw89k1iao8say1yq0fv0861sqmhp5b88f7cwmqrtodi6o7uyrko0i&redirect=expenses"
+        },
+        { "name": "View Payments", "url": "/payments" },
+        {
+          "name": "View Profile",
+          "url": "https://www1.jobdiva.com/portal/okta-login.jsp?a=imjdnwq7mxlmw89k1iao8say1yq0fv0861sqmhp5b88f7cwmqrtodi6o7uyrko0i&redirect=profile"
+        }
+      ]
+    },
+    "errors": [],
+    "correlationId": "44a379aa44f2630f49aec136e8f97a7d"
+  }
+}

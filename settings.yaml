@@ -1,0 +1,103 @@
+environment: dev
+namespace: frontend
+nodeSelector: null
+tolerations: null
+
+ingressRules:
+  - host: settings-dev.mbopartners.com
+    http:
+      paths:
+        - pathType: Prefix
+          path: /
+          backend:
+            service:
+              name: mf-settings
+              port:
+                number: 80
+
+ingressClassName: nginx
+ingressAnnotations:
+  nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+  nginx.ingress.kubernetes.io/proxy-body-size: 10m
+  nginx.ingress.kubernetes.io/proxy-buffering: "on"
+  nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
+  nginx.ingress.kubernetes.io/server-snippet: |
+    more_set_headers "Strict-Transport-Security max-age=30";
+  nginx.ingress.kubernetes.io/configuration-snippet: |
+    more_set_headers "X-Content-Type-Options nosniff";
+    more_set_headers "X-Xss-Protection: 1; mode=block";
+    # Nginx requires a one-line CSP
+    set $SCRIPT "script-src 'self' 'unsafe-inline' 'unsafe-eval'";
+    set $SCRIPT "${SCRIPT} https://op1static.oktacdn.com";
+    set $SCRIPT "${SCRIPT} https://ok11static.oktacdn.com";
+    set $SCRIPT "${SCRIPT} https://login.okta.com";
+    set $SCRIPT "${SCRIPT} https://www.google-analytics.com";
+    set $SCRIPT "${SCRIPT} https://aws-east-k8s-ingress-dev.mbopartners.com";
+    set $SCRIPT "${SCRIPT} https://api.smooch.io";
+    set $STYLE "style-src 'self' 'unsafe-inline'";
+    set $STYLE "${STYLE} https://fonts.googleapis.com";
+    set $IMG "img-src 'self' data:";
+    set $IMG "${IMG} https://aws-east-k8s-ingress-dev.mbopartners.com";
+    set $FONT "font-src 'self' data:";
+    set $FONT "${FONT} https://fonts.gstatic.com";
+    set $DEFAULT "default-src 'self'";
+    set $CONNECT "connect-src 'self'";
+    set $CONNECT "${CONNECT} https://auth-dev.mbopartners.com";
+    set $CONNECT "${CONNECT} https://aws-east-k8s-ingress-dev.mbopartners.com";
+    set $CONNECT "${CONNECT} https://dev-api.mbopartners.com";
+    set $FRAME "frame-src 'self'";
+    set $FRAME "${FRAME} https://auth-dev.mbopartners.com";
+    set $FRAME "${FRAME} https://aws-east-k8s-ingress-dev.mbopartners.com";
+    add_header Content-Security-Policy "${SCRIPT}; ${STYLE}; ${IMG}; ${FONT}; ${DEFAULT}; ${CONNECT}; ${FRAME}";
+    set $allowmethods "GET, POST, PUT, DELETE, OPTIONS";
+    set $allowheaders "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Type,Authorization";
+    set $exposeheaders "link, x-total-count";
+    if ($http_origin ~* (^https?://([^/]+\.)*(localhost:3000|.*.mbopartners.com)$)) {
+        set $cors "true";
+    }
+    # Nginx doesn't support nested If statements. This is where things get slightly nasty.
+    # Determine the HTTP request method used
+    if ($request_method = 'OPTIONS') {
+        set $cors "${cors}options";
+    }
+    if ($request_method = 'GET') {
+        set $cors "${cors}get";
+    }
+    if ($request_method = 'POST') {
+        set $cors "${cors}post";
+    }
+    if ($cors = "true") {
+        # Catch all incase there's a request method we're not dealing with properly
+        add_header 'Access-Control-Allow-Origin' "$http_origin";
+    }
+    if ($cors = "trueget") {
+        add_header 'Access-Control-Allow-Origin' "$http_origin";
+        add_header 'Access-Control-Allow-Credentials' 'true';
+        add_header 'Access-Control-Allow-Methods' "$allowmethods";
+        add_header 'Access-Control-Allow-Headers' "$allowheaders";
+    }
+    if ($cors = "trueoptions") {
+        add_header 'Access-Control-Allow-Origin' "$http_origin";
+        #
+        # Om nom nom cookies
+        #
+        add_header 'Access-Control-Allow-Credentials' 'true';
+        add_header 'Access-Control-Allow-Methods' "$allowmethods";
+        #
+        # Custom headers and headers various browsers *should* be OK with but aren't
+        #
+        add_header 'Access-Control-Allow-Headers' "$allowheaders";
+        #
+        # Tell client that this pre-flight info is valid for 20 days
+        #
+        add_header 'Access-Control-Max-Age' 1728000;
+        add_header 'Content-Type' 'text/plain charset=UTF-8';
+        add_header 'Content-Length' 0;
+        return 204;
+    }
+    if ($cors = "truepost") {
+        add_header 'Access-Control-Allow-Origin' "$http_origin";
+        add_header 'Access-Control-Allow-Credentials' 'true';
+        add_header 'Access-Control-Allow-Methods' "$allowmethods";
+        add_header 'Access-Control-Allow-Headers' "$allowheaders";
+    }

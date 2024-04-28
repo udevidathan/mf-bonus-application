@@ -1,0 +1,8 @@
+config
+public
+build
+dist
+node_modules
+pack.js
+.yarnrc.yml
+coverage

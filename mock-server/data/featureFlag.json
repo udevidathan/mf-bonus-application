@@ -1,0 +1,34 @@
+{
+  "data": {
+    "menuOption": {
+      "topNav": [],
+      "sideNav": []
+    },
+    "features": [
+      "portal_landing_page",
+      "portal_pwc_support",
+      "portal_settings-account",
+      "portal_settings-payments",
+      "portal_settings-security",
+      "portal_settings-tax-info",
+      "portal_settings-benefits",
+      "portal_settings-support",
+      "portal_settings-direct-deposit",
+      "portal_settings-emergency-contact",
+      "cache_test"
+    ]
+  },
+  "errors": [],
+  "correlationId": "9740167809710eb5359023d559f74f1a",
+  "responseTime": null,
+  "metaData": {
+    "companyInfos": [
+      {
+        "companyName": "Aon - Beeline",
+        "displayName": "Aon",
+        "s4CompanyId": "10459",
+        "isCutoverCompany": false
+      }
+    ]
+  }
+}

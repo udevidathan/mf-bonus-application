@@ -1,0 +1,35 @@
+{
+  "data": {
+    "currentPage": null,
+    "pageSize": null,
+    "totalCount": null,
+    "totalPages": null,
+    "candidates": [
+      {
+        "candidateId": "15195085136322",
+        "firstName": "Jacob",
+        "lastName": "Hobbs",
+        "email": "prtaluat+Businessaon@gmail.com",
+        "workerType": "1099 Independent Contractor",
+        "engagementService": "BUSINESS",
+        "taxClassification": "C Corporation",
+        "businessName": "Jacob Consulting",
+        "isTeamLead": false,
+        "isCandidate": true,
+        "isBusinessCenterUser": true,
+        "isSupplierContact": false,
+        "isInternalUser": false,
+        "isBroker": false,
+        "roles": [
+          "Everyone",
+          "Business Services",
+          "jd_candidate",
+          "mboportal-provider",
+          "skip_mfa"
+        ]
+      }
+    ]
+  },
+  "errors": [],
+  "correlationId": "1c7d3699dc3010eba8f14474483e2427"
+}

@@ -1,0 +1,17 @@
+{
+  "data": {
+    "data": {
+      "active": {
+        "employeeId": "13968276661056",
+        "name": "Robert Kappes",
+        "bankName": "BANK OF AMERICA N.A.",
+        "bankDepositAccountNumber": "13968276661056",
+        "routingNumber": "111000025"
+      },
+      "inProgress": null,
+      "showUpdateProgressMessage": true
+    },
+    "errors": [],
+    "correlationId": "24ba7dc93e8f71f55c0a142afe4d7c87"
+  }
+}

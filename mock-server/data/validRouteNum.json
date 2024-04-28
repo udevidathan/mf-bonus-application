@@ -1,0 +1,25 @@
+{
+  "data": {
+    "isValid": true
+  },
+  "errors": [
+    {
+      "code": 70107,
+      "fieldPath": "routingNumber",
+      "type": "Invalid Input",
+      "message": "Validation Error",
+      "userMessage": "The routing number entered is invalid or not supported. Please check it again or enter a different routing number.",
+      "logs": null
+    },
+    {
+      "code": 70107,
+      "fieldPath": "bankDepositAccountNumber",
+      "type": "Invalid Input",
+      "message": "Validation Error",
+      "userMessage": "The bank deposit account number entered is invalid or not supported. Please check it again or enter a different bank deposit account number.",
+      "logs": null
+    }
+  ],
+  "correlationId": null,
+  "responseTime": null
+}

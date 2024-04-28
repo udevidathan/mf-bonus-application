@@ -1,0 +1,22 @@
+{
+  "correlationId": "42846980a4b300d566b40a9a06a91a37",
+  "data": null,
+  "errors": [
+    {
+      "code": 82001,
+      "fieldPath": "x-hop-id",
+      "type": "Validation",
+      "message": "Internal Server Error",
+      "logs": "",
+      "userMessage": "Try again!"
+    },
+    {
+      "code": 70100,
+      "fieldPath": "x-hop-id",
+      "type": "Validation",
+      "userMessage": "Try again after sometime. If the issue persist, we apologize for any inconvenience and will resolve asap.",
+      "message": "x-hop-id header is either missing or its value is empty",
+      "logs": ""
+    }
+  ]
+}

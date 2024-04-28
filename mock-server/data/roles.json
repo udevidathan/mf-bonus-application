@@ -1,0 +1,15 @@
+{
+  "data": {
+    "data": {
+      "roles": [
+        "jd_candidate",
+        "Everyone",
+        "mboportal-provider",
+        "skip_mfa",
+        "Business Services"
+      ]
+    },
+    "errors": [],
+    "correlationId": "c726ee6c1e41f4b82ad5b0dbea18c987"
+  }
+}

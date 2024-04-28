@@ -1,0 +1,190 @@
+:root {
+  --caret-entity-code: "\203A";
+  --min-height-hero: 50px;
+  --max-height-hero: 300px;
+  --min-height-toolbar: 40px;
+}
+.radioPadding {
+  padding:15px;
+}
+
+@mixin toolbar-mobile-style {
+  background: transparent;
+  padding-block: 1rem;
+  box-shadow: none;
+  position: unset;
+}
+[data-item="layout-toolbar"] {
+  padding-block: 0;
+  &:has(.stacked) {
+    @include toolbar-mobile-style();
+  }
+  // for mozilla hack
+  @-moz-document url-prefix() {
+    @media screen and (width < 768px) {
+      &.settings {
+        @include toolbar-mobile-style();
+      }
+    }
+  }
+}
+
+.tab {
+  --tab-gap: var(--size-2);
+  --tab-bg: transparent;
+  --tab-radius: none;
+  border-radius: var(--tab-radius);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--tab-gap);
+  flex-wrap: wrap;
+  background: var(--tab-bg);
+
+  li.item {
+    --item-min-height: var(--size-12);
+    --color: var(--color-neutrals-400);
+    --fw: 400;
+    --padding: calc(var(--size-4) - 4px) var(--size-4);
+    --border-size: var(--size-1);
+    --border-color: var(--color-secondary-400);
+    list-style-type: none;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--color);
+    padding: var(--padding);
+    font-size: var(--fs-14);
+    font-weight: var(--fw);
+    position: relative;
+    min-height: var(--item-min-height);
+    &:where(:hover, .active) {
+      --color: var(--color-neutrals-900);
+      --fw: 600;
+      &:before {
+        content: "";
+        height: var(--border-size);
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: calc(-1 * var(--border-size));
+        background: var(--border-color);
+        border-bottom-left-radius: var(--border-size);
+        border-bottom-right-radius: var(--border-size);
+      }
+    }
+  }
+  &.stacked {
+    // @media screen and (width < 768px) {
+    --tab-gap: 0;
+    --tab-bg: var(--color-white);
+    --tab-radius: var(--radius-rounded);
+    li.item {
+      --border-color: transparent;
+      --fw: 600;
+      flex: 1 1 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &:before {
+        display: none;
+      }
+      &::after {
+        content: var(--caret-entity-code);
+        font-size: var(--fs-24);
+        line-height: 0;
+      }
+      &:where(:nth-child(even)) {
+        background: var(--color-secondary-tint-200);
+      }
+    }
+    // }
+  }
+  // .mobile-stack end
+}
+
+//  tab style here
+
+.settings {
+  --min-height-toolbar: 48px;
+  &:is([data-item="layout-content"]) {
+    --padding-content-block: var(--size-9);
+    display: grid;
+    position: relative;
+    isolation: isolate;
+    background-color: var(--color-primary-100);
+  }
+
+  .form-title {
+    margin-bottom: var(--size-4-5);
+    color: var(--color-neutrals-900);
+    // is mobile styles
+    &.isAppMobile {
+      color: var(--color-neutrals-400);
+      opacity: var(--opacity-90);
+      font-size: var(--fs-14);
+    }
+  }
+
+  // .elevation {
+  //   a:not(.btn) {
+  //     color: var(--color-neutrals-900);
+  //     font-weight: 500;
+  //     text-decoration: none;
+
+  //     &:hover {
+  //       text-decoration: underline;
+  //     }
+  //   }
+  // }
+
+  .btn {
+    font-size: var(--fs-14);
+    text-decoration: none;
+  }
+
+  .mbo-rounded-link-icon--md,
+  .mbo-rounded-icon--md {
+    padding: 0.75rem;
+  }
+
+  .mbo-rounded-link-icon,
+  .mbo-rounded-icon {
+    padding: 0.75rem;
+    border-radius: 100%;
+    background: var(--color-primary-500);
+    display: flex;
+    place-items: center;
+    color: var(--color-white);
+  }
+
+  .mbo-rounded-link-icon--white,
+  .mbo-rounded-icon--white {
+    background: var(--color-white);
+  }
+
+  .support-title {
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .icon-primary {
+    color: var(--color-primary-600);
+  }
+
+  .mbo-bg--neutrals-white-tint60 {
+    background: var(--color-neutrals-white-600);
+  }
+
+  // .has-arrow {
+  //   &:after {
+  //     margin-left: auto;
+  //     content: var(--caret-entity-code);
+  //     font-size: var(--fs-28);
+  //   }
+  // }
+}
+//.settings end

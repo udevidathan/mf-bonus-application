@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2016",
+    "lib": [
+      "DOM",
+      "ESNEXT"
+    ],
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "rootDir": "./src",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "removeComments": true,
+    "noEmit": true,
+    "preserveConstEnums": true,
+    "isolatedModules": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
